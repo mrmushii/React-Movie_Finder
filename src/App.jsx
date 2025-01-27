@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom"; // Import Routes and Route
+import { Routes, Route, useNavigate } from "react-router-dom"; // Import Routes and Route
 import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
@@ -49,9 +49,11 @@ const App = () => {
         setMovieList([]);
         return;
       }
-
+      console.log(data);
+      
       setMovieList(data.results);
-
+      console.log(movieList);
+      
       if (query && data.results.length > 0) {
         await updateSearchCount(query, data.results[0]);
       }
@@ -80,6 +82,11 @@ const App = () => {
     loadTrendingMovies();
   }, []);
 
+  const navigate = useNavigate();
+  const handleMovieClick = (id) => {
+    navigate(`/movie_detail/${id}`); // Navigate to the dynamic route with the movie ID
+  };
+  
   return (
     <Routes>
       {/* Home Page */}
@@ -104,7 +111,13 @@ const App = () => {
                   <h2>Trending Movies</h2>
                   <ul>
                     {trendingMovies.map((movie, index) => (
-                      <li key={movie.$id}>
+                      <li 
+                      onClick={() => handleMovieClick(movie.movie_id)}
+
+                       className="cursor-pointer"
+                        key={movie.$id}>
+                        
+                        
                         <p>{index + 1}</p>
                         <img
                           src={movie.poster_url || "/no-movie.png"}
@@ -125,7 +138,10 @@ const App = () => {
                   <p className="text-red-500">{errorMessage}</p>
                 ) : (
                   <ul>
+                    
                     {movieList.map((movie) => (
+                      
+                      
                       <MovieCard key={movie.id} movie={movie} />
                     ))}
                   </ul>

@@ -29,13 +29,13 @@ const MovieDetails = () => {
         if (!response.ok) throw new Error("Failed to fetch movie details");
         const data = await response.json();
         setMovie(data);
-        console.log(data);
+        
         const videoResponse = await fetch(`${API_BASE_URL}/movie/${id}/videos?`,API_OPTIONS);
         const videoData = await videoResponse.json();
         if (videoData && videoData.results && videoData.results.length > 0) {
           setTrailerId(videoData.results[0].key); // Set trailer ID if available
         }
-        console.log(videoData);
+        
         
       } catch (error) {
         setErrorMessage(error.message);
