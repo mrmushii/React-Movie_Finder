@@ -51,8 +51,8 @@ const MovieDetails = () => {
   if (errorMessage) return <p className="text-red-500">{errorMessage}</p>;
 
   return (
-    <div className="movie-card px-20">
-      <div className="flex justify-between pt-12 ">
+    <div className="movie-card xl:px-18 sm:px-0 md:px-0 ">
+      <div className="flex justify-between pt-12 sm:px-18 md:px-18 ">
         <div>
           <h2>{movie.title}</h2>
         </div>
@@ -63,14 +63,14 @@ const MovieDetails = () => {
         
       </div>
       <br />
-      <div className="content"> 
-      <p className="year text-gray-400">{movie.release_date ? movie.release_date.split("-")[0] : "N/A"}</p>
-      <span>•</span>
-      <p className='text-gray-400'>{movie.runtime} mins</p>
+      <div className="content sm:px-18 md:px-18"> 
+        <p className="year text-gray-400">{movie.release_date ? movie.release_date.split("-")[0] : "N/A"}</p>
+        <span>•</span>
+        <p className='text-gray-400'>{movie.runtime} mins</p>
       </div>
       <br />
       <br />
-      <div className="flex justify-between gap-18 rounded-4xl m-20">
+      <div className="flex xl:flex-row  sm:flex-col md:flex-row justify-between gap-18 rounded-4xl m-20">
       <img width={300} height={400} className="w-auto"
         src={movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : "/no-movie.png"}
         alt={movie.title}
@@ -97,8 +97,8 @@ const MovieDetails = () => {
         </div>
       </div>
       <div>
-        <h2 className="font-semibold text-lg flex flex-wrap">Overview</h2>
-        <p className="w-3xl">{movie.overview}</p>
+        <h2 className="font-semibold text-lg ">Overview</h2>
+        <p className="max-w-3xl flex sm:flex-wrap">{movie.overview}</p>
       </div>
       <div className="grid grid-cols-2 gap-4 text-sm">
         <div>
