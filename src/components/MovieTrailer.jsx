@@ -11,7 +11,7 @@ const MovieTrailer = ({ trailerId }) => {
     <div className="relative aspect-w-16 w-full">
       <iframe
         src={`https://www.youtube.com/embed/${trailerId}`}
-        className="absolute inset-0 w-full h-full border-0 rounded-lg "
+        className="absolute inset-0 w-full h-full border-0 rounded-lg"
         title="Movie Trailer"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen

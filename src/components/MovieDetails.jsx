@@ -52,7 +52,7 @@ const MovieDetails = () => {
 
   return (
     <div className="movie-card xl:px-18 sm:px-0 md:px-0 ">
-      <div className="flex justify-between pt-12 sm:px-18 md:px-18 ">
+      <div className="flex justify-between xl:pt-12 sm:pt-0 md:pt-0 sm:px-18 md:px-18 ">
         <div>
           <h2>{movie.title}</h2>
         </div>
